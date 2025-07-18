@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         {
             nJump = 2; // Reset jump count when grounded
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && nJump > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             nJump--;
