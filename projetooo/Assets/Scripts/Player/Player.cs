@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 5f;
     public float jumpForce = 6f;
+    private int jump2 = 2;
     private BoxCollider2D bc2d;
     [SerializeField] private LayerMask groundLayer;
     
@@ -51,10 +52,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
         }
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
         RaycastHit2D ground = Physics2D.BoxCast(bc2d.bounds.center, bc2d.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
         return ground.collider != null;
