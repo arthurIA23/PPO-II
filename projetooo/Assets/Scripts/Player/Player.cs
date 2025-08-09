@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 5f;
     public float jumpForce = 6f;
-    private int jump2 = 2;
+    private int maxJumps = 2;
+    private int jumpsLeft;
     private BoxCollider2D bc2d;
     [SerializeField] private LayerMask groundLayer;
     
@@ -49,10 +50,10 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && jumpsLeft > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
+            jumpsLeft--;
         }
     }
 
@@ -86,6 +87,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGrounded())
+        {
+            jumpsLeft = maxJumps;
+        }
         Jump();
     }
 
