@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private int jumpsLeft;
     private BoxCollider2D bc2d;
     [SerializeField] private LayerMask groundLayer;
-    
+
     [Header("Flip Settings")]
     public bool facingRight = true; // Direção inicial do personagem
     private SpriteRenderer spriteRenderer;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
-            
+
             // Flip para a direita
             if (!facingRight)
             {
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.A))
         {
             rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
-            
+
             // Flip para a esquerda
             if (facingRight)
             {
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     {
         // Inverte a direção
         facingRight = !facingRight;
-        
+
         // Vira o sprite horizontalmente
         if (spriteRenderer != null)
         {
@@ -97,6 +97,13 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("death")) {
+            transform.position = new Vector3(-0.94f, -2.55f, transform.position.z);
+        }
     }
 
 
