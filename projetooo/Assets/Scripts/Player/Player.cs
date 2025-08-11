@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 5f;
     public float jumpForce = 6f;
-    private int maxJumps = 2;
+    private int maxJumps = 1;
     private int jumpsLeft;
     private BoxCollider2D bc2d;
     [SerializeField] private LayerMask groundLayer;

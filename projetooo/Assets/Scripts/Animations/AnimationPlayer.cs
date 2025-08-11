@@ -22,7 +22,7 @@ public class AnimationPlayer : MonoBehaviour
 
     void Update()
     {
-        // Corrige o erro: isGrounded é um método, precisa dos parênteses
+       
         if (player.isGrounded())
         {
             float velX = Mathf.Abs(rb.linearVelocity.x);
