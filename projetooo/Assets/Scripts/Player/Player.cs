@@ -1,6 +1,7 @@
- using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; // Adicionado para gerenciar cenas
 
 public class Player : MonoBehaviour
 {
@@ -99,12 +100,20 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("death")) {
-            transform.position = new Vector3(-0.94f, -2.55f, transform.position.z);
+        if (collision.gameObject.CompareTag("Inimigo"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("death"))
+        {
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
 }

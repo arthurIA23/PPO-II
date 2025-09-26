@@ -8,6 +8,7 @@ TagManager:
   - coin
   - itens
   - death
+  - Inimigo
   layers:
   - Default
   - TransparentFX
